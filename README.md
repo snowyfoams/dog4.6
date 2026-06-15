@@ -4,6 +4,14 @@ Self-contained sibling of `DOG3.0_description` with identical functionality, but
 platform is the new Fusion 360 "DOG" robot: **7.334 kg, MG5010-i10 actuators,
 tau_max = ±7 N·m, rotor armature 8.5e-3 kg·m²** (measured, reflected through 10:1).
 
+## Simulation environment
+
+The MuJoCo scene (`scene\DOG4.6_scene.xml`) places the robot on a flat checkerboard
+floor and drives it at a commanded body velocity. Six successive frames of a trot
+(SLQ-MPC + leg control, 0.3 m/s), ordered left-to-right then top-to-bottom:
+
+![Simulation environment — six successive trot frames](scene/DOG4.6_sim_env.png)
+
 ```
 scene\DOG4.6_scene.xml     simulation scene (joint1..12 / m1..12 / {leg}_foot sites —
                            same naming contract as DOG3.0, srb_mpc runs unchanged)
