@@ -1,0 +1,148 @@
+<mujoco model="dog">
+  <!-- Generated from Fusion 360 design "DOG" (2026-06-12). Zero pose = standing.
+       armature = rotor inertia 8.5e-5 kg*m^2 x gear^2 (assumed 10:1 for MG5010-i10 -> 8.5e-3).
+       Joint ranges and ctrlrange are PLACEHOLDERS - fill from the MG5010-i10 datasheet. -->
+  <compiler angle="radian" meshdir="meshes" autolimits="true"/>
+  <option timestep="0.002"/>
+  <default>
+    <joint type="hinge" damping="0.01" frictionloss="0.1" armature="0.0085"/>
+    <geom type="mesh" friction="0.6 0.01 0.01"/>
+    <motor ctrlrange="-10 10"/>
+  </default>
+  <asset>
+    <texture type="skybox" builtin="gradient" rgb1="0.5 0.7 0.9" rgb2="0.9 0.9 0.9" width="64" height="64"/>
+    <texture name="grid" type="2d" builtin="checker" rgb1="0.3 0.35 0.4" rgb2="0.4 0.45 0.5" width="256" height="256"/>
+    <material name="grid" texture="grid" texrepeat="4 4" reflectance="0.1"/>
+    <mesh name="base_link" file="base_link.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="FR_abd_motor" file="FR_abd_motor.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="FL_abd_motor" file="FL_abd_motor.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="RL_abd_motor" file="RL_abd_motor.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="RR_abd_motor" file="RR_abd_motor.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="FR_hip" file="FR_hip.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="FR_hip_motor" file="FR_hip_motor.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="FR_thigh" file="FR_thigh.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="FR_knee_motor" file="FR_knee_motor.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="FR_calf" file="FR_calf.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="FR_foot" file="FR_foot.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="FL_hip" file="FL_hip.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="FL_hip_motor" file="FL_hip_motor.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="FL_thigh" file="FL_thigh.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="FL_knee_motor" file="FL_knee_motor.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="FL_calf" file="FL_calf.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="FL_foot" file="FL_foot.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="RL_hip" file="RL_hip.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="RL_hip_motor" file="RL_hip_motor.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="RL_thigh" file="RL_thigh.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="RL_knee_motor" file="RL_knee_motor.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="RL_calf" file="RL_calf.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="RL_foot" file="RL_foot.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="RR_hip" file="RR_hip.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="RR_hip_motor" file="RR_hip_motor.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="RR_thigh" file="RR_thigh.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="RR_knee_motor" file="RR_knee_motor.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="RR_calf" file="RR_calf.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="RR_foot" file="RR_foot.stl" scale="0.001 0.001 0.001"/>
+  </asset>
+  <worldbody>
+    <light pos="0 0 2" dir="0 0 -1" directional="true"/>
+    <geom name="floor" type="plane" size="3 3 0.05" material="grid"/>
+    <body name="trunk" pos="0 0 0.2243">
+      <freejoint name="root"/>
+      <inertial pos="0.00071 -0.000009 -0.008279" mass="3.288409" fullinertia="0.01590483 0.09377696 0.10646657 -0.00000167 -0.00011011 -0.00000047"/>
+      <geom mesh="base_link" pos="0 0.1 0.04" quat="0.70710678 -0.70710678 0 0"/>
+      <geom mesh="FR_abd_motor" pos="0.2353145 -0.06 0" quat="0 0 0.73526856 0.67777588"/>
+      <geom mesh="FL_abd_motor" pos="0.2353145 0.06 0" quat="0 0 0.73526856 0.67777588"/>
+      <geom mesh="RL_abd_motor" pos="-0.2353145 0.06 0" quat="0.86742875 -0.49756142 0 0"/>
+      <geom mesh="RR_abd_motor" pos="-0.2353145 -0.06 0" quat="0.86742875 -0.49756142 0 0"/>
+      <body name="FR_hip" pos="0.269978 -0.06 0">
+        <joint name="FR_hip_joint" axis="1 0 0" range="-0.8 0.8"/>
+        <inertial pos="-0.004584 -0.061997 -0.000001" mass="0.495739" fullinertia="0.00034087 0.00032573 0.00040909 0.00010822 -0.00000001 -0.00000001"/>
+        <geom mesh="FR_hip" pos="-0.04194467 -0.04589916 -0.0002075" quat="0.65328148 -0.65328148 0.27059805 -0.27059805"/>
+        <geom mesh="FR_hip_motor" pos="0.00000013 -0.10112398 0" quat="-0.49358044 0.50633817 0.50633817 -0.49358044"/>
+        <body name="FR_thigh" pos="0 -0.056109 0">
+          <joint name="FR_thigh_joint" axis="0 1 0" range="-2.6 2.6"/>
+          <inertial pos="-0.056926 -0.015186 -0.098341" mass="0.468206" fullinertia="0.00039306 0.00050126 0.00024872 0.00003233 -0.00011742 0.00005896"/>
+          <geom mesh="FR_thigh" pos="0.00000013 -0.04270048 0" quat="0.5 0 0.8660254 0"/>
+          <geom mesh="FR_knee_motor" pos="-0.05999987 0.01961402 -0.10392305" quat="0.68915516 0.15831984 -0.15831984 -0.68915516"/>
+          <body name="FR_calf" pos="-0.06 0 -0.103923">
+            <joint name="FR_calf_joint" axis="0 1 0" range="-2.6 2.6"/>
+            <inertial pos="0.037634 0.00935 -0.067057" mass="0.047362" fullinertia="0.00008908 0.00011814 0.00003334 0 0.00004567 0"/>
+            <geom mesh="FR_calf" pos="-0.00950346 0.09664952 -0.00342439" quat="0.684114 0.684114 -0.178852 0.178852"/>
+            <geom mesh="FR_foot" pos="0.05462272 0.00934952 -0.09732637" quat="0.35727419 0.61020911 -0.61020911 -0.35727419"/>
+          </body>
+        </body>
+      </body>
+      <body name="FL_hip" pos="0.269978 0.06 0">
+        <joint name="FL_hip_joint" axis="1 0 0" range="-0.8 0.8"/>
+        <inertial pos="-0.004584 0.061997 0.000001" mass="0.495739" fullinertia="0.00034087 0.00032573 0.00040909 -0.00010822 0.00000001 -0.00000001"/>
+        <geom mesh="FL_hip" pos="-0.04194467 0.04589916 0.0002075" quat="0.65328148 0.65328148 0.27059805 0.27059805"/>
+        <geom mesh="FL_hip_motor" pos="0.00000013 0.10112398 0" quat="0.50481752 0.49513561 -0.49513561 -0.50481752"/>
+        <body name="FL_thigh" pos="0 0.056109 0">
+          <joint name="FL_thigh_joint" axis="0 1 0" range="-2.6 2.6"/>
+          <inertial pos="-0.056692 0.015186 -0.098465" mass="0.468206" fullinertia="0.00038651 0.00050119 0.00025521 -0.00003496 -0.00012116 -0.00005755"/>
+          <geom mesh="FL_thigh" pos="0.00000013 0.04270048 0" quat="0 -0.5 0 0.8660254"/>
+          <geom mesh="FL_knee_motor" pos="-0.05999987 -0.01961402 -0.10392305" quat="-0.0928138 0.70098901 0.70098901 -0.0928138"/>
+          <body name="FL_calf" pos="-0.06 0 -0.103923">
+            <joint name="FL_calf_joint" axis="0 1 0" range="-2.6 2.6"/>
+            <inertial pos="0.037634 -0.00935 -0.067057" mass="0.047362" fullinertia="0.00008908 0.00011814 0.00003334 0 0.00004567 0"/>
+            <geom mesh="FL_calf" pos="0.00787389 -0.09664952 0.00632832" quat="0.178852 -0.178852 0.684114 0.684114"/>
+            <geom mesh="FL_foot" pos="0.05462272 -0.00934952 -0.09732637" quat="0.61020911 0.35727419 0.35727419 0.61020911"/>
+          </body>
+        </body>
+      </body>
+      <body name="RL_hip" pos="-0.269978 0.06 0">
+        <joint name="RL_hip_joint" axis="1 0 0" range="-0.8 0.8"/>
+        <inertial pos="0.004598 0.061997 0.000002" mass="0.495739" fullinertia="0.00034087 0.00032567 0.00040903 0.00010831 0.00000002 -0.00000001"/>
+        <geom mesh="RL_hip" pos="0.04194467 0.04589916 -0.0002075" quat="0.27059805 -0.27059805 -0.65328148 0.65328148"/>
+        <geom mesh="RL_hip_motor" pos="-0.00000013 0.10112398 0" quat="0.5 0.5 -0.5 -0.5"/>
+        <body name="RL_thigh" pos="0 0.056109 0">
+          <joint name="RL_thigh_joint" axis="0 1 0" range="-2.6 2.6"/>
+          <inertial pos="-0.056703 0.015186 -0.09847" mass="0.468206" fullinertia="0.00038649 0.00050126 0.00025529 -0.00003489 -0.00012121 -0.00005748"/>
+          <geom mesh="RL_thigh" pos="-0.00000013 0.04270048 0" quat="0 -0.5 0 0.8660254"/>
+          <geom mesh="RL_knee_motor" pos="-0.06000013 -0.01961402 -0.10392305" quat="0.51766595 0.48168658 0.48168658 0.51766595"/>
+          <body name="RL_calf" pos="-0.06 0 -0.103923">
+            <joint name="RL_calf_joint" axis="0 1 0" range="-2.6 2.6"/>
+            <inertial pos="0.037634 -0.00935 -0.067057" mass="0.047362" fullinertia="0.00008908 0.00011814 0.00003334 0 0.00004567 0"/>
+            <geom mesh="RL_calf" pos="0.00787363 -0.09664952 0.00632832" quat="0.178852 -0.178852 0.684114 0.684114"/>
+            <geom mesh="RL_foot" pos="0.05462246 -0.00934952 -0.09732637" quat="0.61020911 0.35727419 0.35727419 0.61020911"/>
+          </body>
+        </body>
+      </body>
+      <body name="RR_hip" pos="-0.269978 -0.06 0">
+        <joint name="RR_hip_joint" axis="1 0 0" range="-0.8 0.8"/>
+        <inertial pos="0.004598 -0.061997 -0.000002" mass="0.495739" fullinertia="0.00034087 0.00032567 0.00040903 -0.00010831 -0.00000002 -0.00000001"/>
+        <geom mesh="RR_hip" pos="0.04194467 -0.04589916 0.0002075" quat="-0.27059805 -0.27059805 0.65328148 0.65328148"/>
+        <geom mesh="RR_hip_motor" pos="-0.00000013 -0.10112398 0" quat="-0.5 0.5 0.5 -0.5"/>
+        <body name="RR_thigh" pos="0 -0.056109 0">
+          <joint name="RR_thigh_joint" axis="0 1 0" range="-2.6 2.6"/>
+          <inertial pos="-0.056926 -0.015186 -0.098341" mass="0.468206" fullinertia="0.00039306 0.00050126 0.00024872 0.00003233 -0.00011742 0.00005896"/>
+          <geom mesh="RR_thigh" pos="-0.00000013 -0.04270048 0" quat="0.5 0 0.8660254 0"/>
+          <geom mesh="RR_knee_motor" pos="-0.06000013 0.01961402 -0.10392305" quat="0.68915516 0.15831984 -0.15831984 -0.68915516"/>
+          <body name="RR_calf" pos="-0.06 0 -0.103923">
+            <joint name="RR_calf_joint" axis="0 1 0" range="-2.6 2.6"/>
+            <inertial pos="0.037634 0.00935 -0.067057" mass="0.047362" fullinertia="0.00008908 0.00011814 0.00003334 0 0.00004567 0"/>
+            <geom mesh="RR_calf" pos="-0.00950372 0.09664952 -0.00342439" quat="0.684114 0.684114 -0.178852 0.178852"/>
+            <geom mesh="RR_foot" pos="0.05462246 0.00934952 -0.09732637" quat="0.35727419 0.61020911 -0.61020911 -0.35727419"/>
+          </body>
+        </body>
+      </body>
+    </body>
+  </worldbody>
+  <actuator>
+    <motor name="FR_hip" joint="FR_hip_joint" gear="1"/>
+    <motor name="FR_thigh" joint="FR_thigh_joint" gear="1"/>
+    <motor name="FR_calf" joint="FR_calf_joint" gear="1"/>
+    <motor name="FL_hip" joint="FL_hip_joint" gear="1"/>
+    <motor name="FL_thigh" joint="FL_thigh_joint" gear="1"/>
+    <motor name="FL_calf" joint="FL_calf_joint" gear="1"/>
+    <motor name="RL_hip" joint="RL_hip_joint" gear="1"/>
+    <motor name="RL_thigh" joint="RL_thigh_joint" gear="1"/>
+    <motor name="RL_calf" joint="RL_calf_joint" gear="1"/>
+    <motor name="RR_hip" joint="RR_hip_joint" gear="1"/>
+    <motor name="RR_thigh" joint="RR_thigh_joint" gear="1"/>
+    <motor name="RR_calf" joint="RR_calf_joint" gear="1"/>
+  </actuator>
+  <keyframe>
+    <key name="home" qpos="0 0 0.2243 1 0 0 0  0 0 0  0 0 0  0 0 0  0 0 0"/>
+  </keyframe>
+</mujoco>

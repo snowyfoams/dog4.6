@@ -1,0 +1,17 @@
+\begin{table}[t]\centering
+\caption{The $2\times2$ control-stack ablation on DOG4.6 (physically correct
+current-controlled actuator envelope). High level: convex MPC vs SLQ-MPC;
+low level: $J^\top$ leg controller vs QP whole-body controller.}
+\label{tab:ablation_4p6}
+\begin{tabular}{llccccc}
+\toprule
+stack & high$\,/\,$low & $v_\mathrm{max}$ & $v_\mathrm{track}$ & push & best & solve \\
+ & & [m/s] & [m/s] & /20 & CoT & [ms] \\
+\midrule
+MIT & convex/leg & 0.00 & 0.20 & 8 & 3.20 & 3.8 \\
+ETH & SLQ/WBC & 0.60 & 0.50 & 18 & 0.43 & 23.3 \\
+X1 (cvx$+$WBC) & convex/WBC & 0.20 & 0.20 & 18 & 0.99 & 4.2 \\
+X2 (SLQ$+$leg) & SLQ/leg & 0.10 & 0.20 & 11 & 1.72 & 23.7 \\
+\bottomrule
+\end{tabular}
+\end{table}

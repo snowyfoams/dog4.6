@@ -1,0 +1,15 @@
+\begin{table}[t]\centering
+\caption{Compute on DOG4.6 (control period 2 ms; MPC re-plans every 8 ticks = 16 ms budget). Convex = OSQP (compiled C); SLQ = numpy -- absolute times are language-bound.}
+\label{tab:timing}
+\begin{tabular}{lcccccc}
+\toprule
+stack & MPC mean & MPC p95 & MPC max & loop mean & loop$>$2ms & MPC$>$16ms \\
+ & [ms] & [ms] & [ms] & [ms] & [\%] & [\%] \\
+\midrule
+MIT & 5.16 & 15.23 & 45.33 & 0.86 & 13.0 & 4.9 \\
+ETH & 24.01 & 25.08 & 29.04 & 4.20 & 12.5 & 100.0 \\
+X1 & 6.52 & 23.26 & 47.74 & 1.98 & 13.0 & 9.8 \\
+X2 & 23.85 & 25.31 & 29.87 & 3.38 & 12.9 & 100.0 \\
+\bottomrule
+\end{tabular}
+\end{table}

@@ -1,0 +1,85 @@
+START 2026-06-13T11:55:49.049339
+
+>>> mit s1s2
+=== MIT (convexMPC + leg ctrl) | s1s2 ===
+  S1 vx=0.1: rmse=0.116 mean=0.10 att=4.3deg CoT=5.94 sat=1.5% fell=False
+  S1 vx=0.2: rmse=0.126 mean=0.18 att=4.7deg CoT=3.20 sat=3.3% fell=False
+  S1 vx=0.3: rmse=0.194 mean=0.44 att=9.9deg CoT=1.49 sat=3.6% fell=True
+  S2: max stable speed = 0.00 m/s, failure mode: roll-over
+  MPC solve: mean=3.75 ms  p95=5.43 ms
+[6 s wall]
+<<< exit 0
+
+>>> mit s5
+=== MIT (convexMPC + leg ctrl) | s5 ===
+  S5 +x: nnnYY (mags [10, 20, 30, 40, 50])
+  S5 -x: Ynnnn (mags [10, 20, 30, 40, 50])
+  S5 +y: nnYnY (mags [10, 20, 30, 40, 50])
+  S5 -y: YYnYn (mags [10, 20, 30, 40, 50])
+[34 s wall]
+<<< exit 0
+
+>>> eth s1s2
+=== ETH (SLQ-MPC + QP-WBC) | s1s2 ===
+  S1 vx=0.1: rmse=0.034 mean=0.10 att=0.8deg CoT=1.57 sat=0.0% fell=False
+  S1 vx=0.2: rmse=0.029 mean=0.20 att=0.5deg CoT=0.69 sat=0.0% fell=False
+  S1 vx=0.3: rmse=0.034 mean=0.30 att=0.5deg CoT=0.50 sat=0.0% fell=False
+  S1 vx=0.4: rmse=0.042 mean=0.40 att=0.6deg CoT=0.46 sat=0.0% fell=False
+  S1 vx=0.5: rmse=0.045 mean=0.50 att=0.6deg CoT=0.43 sat=0.0% fell=False
+  S2: max stable speed = 0.60 m/s, failure mode: height collapse
+  MPC solve: mean=23.28 ms  p95=24.12 ms
+[103 s wall]
+<<< exit 0
+
+>>> eth s5
+=== ETH (SLQ-MPC + QP-WBC) | s5 ===
+  S5 +x: YYYYY (mags [10, 20, 30, 40, 50])
+  S5 -x: YYYYY (mags [10, 20, 30, 40, 50])
+  S5 +y: YYYnn (mags [10, 20, 30, 40, 50])
+  S5 -y: YYYYY (mags [10, 20, 30, 40, 50])
+[226 s wall]
+<<< exit 0
+
+>>> cvxwbc s1s2
+=== X1 (convexMPC + QP-WBC) | s1s2 ===
+  S1 vx=0.1: rmse=0.065 mean=0.10 att=2.2deg CoT=2.86 sat=0.0% fell=False
+  S1 vx=0.2: rmse=0.072 mean=0.19 att=4.5deg CoT=0.99 sat=0.1% fell=False
+  S1 vx=0.3: rmse=0.125 mean=0.19 att=6.9deg CoT=1.16 sat=1.5% fell=False
+  S1 vx=0.4: rmse=0.193 mean=0.21 att=7.6deg CoT=1.11 sat=0.9% fell=False
+  S1 vx=0.5: rmse=0.243 mean=0.28 att=7.1deg CoT=1.13 sat=3.0% fell=False
+  S2: max stable speed = 0.20 m/s, failure mode: roll-over
+  MPC solve: mean=4.20 ms  p95=9.89 ms
+[29 s wall]
+<<< exit 0
+
+>>> cvxwbc s5
+=== X1 (convexMPC + QP-WBC) | s5 ===
+  S5 +x: YYYYY (mags [10, 20, 30, 40, 50])
+  S5 -x: YYYYY (mags [10, 20, 30, 40, 50])
+  S5 +y: YYYYY (mags [10, 20, 30, 40, 50])
+  S5 -y: YYYnn (mags [10, 20, 30, 40, 50])
+[97 s wall]
+<<< exit 0
+
+>>> slqjt s1s2
+=== X2 (SLQ-MPC + leg ctrl) | s1s2 ===
+  S1 vx=0.1: rmse=0.037 mean=0.10 att=1.7deg CoT=2.52 sat=0.0% fell=False
+  S1 vx=0.2: rmse=0.089 mean=0.19 att=3.3deg CoT=1.72 sat=0.6% fell=False
+  S1 vx=0.3: rmse=0.095 mean=0.23 att=15.1deg CoT=2.90 sat=14.1% fell=True
+  S2: max stable speed = 0.10 m/s, failure mode: height collapse
+  MPC solve: mean=23.70 ms  p95=24.86 ms
+[33 s wall]
+<<< exit 0
+
+>>> slqjt s5
+=== X2 (SLQ-MPC + leg ctrl) | s5 ===
+  S5 +x: nnnnY (mags [10, 20, 30, 40, 50])
+  S5 -x: YnYnY (mags [10, 20, 30, 40, 50])
+  S5 +y: nYYYY (mags [10, 20, 30, 40, 50])
+  S5 -y: YYYnn (mags [10, 20, 30, 40, 50])
+[166 s wall]
+<<< exit 0
+
+>>> report
+report -> comparison_summary.md, s1_tracking.png, s5_push.png
+ALL BENCHMARK RUNS DONE 2026-06-13T12:07:25.965089

@@ -1,0 +1,153 @@
+<mujoco model="dog_new">
+  <!-- NEW Fusion dog (7.334 kg, MG5010-i10, tau_max 7 Nm). Naming matches srb_mpc/robot.py. -->
+  <compiler angle="radian" meshdir="D:/mujoco/DOG4.6_description/meshes" autolimits="true"/>
+  <option timestep="0.002" integrator="implicitfast"/>
+  <visual><global offwidth="1440" offheight="1080"/></visual>
+  <default>
+    <joint type="hinge" damping="0.01" armature="0.0085"/>
+  </default>
+  <asset>
+    <texture type="skybox" builtin="gradient" rgb1="0.5 0.7 0.9" rgb2="0.9 0.9 0.9" width="64" height="64"/>
+    <texture name="grid" type="2d" builtin="checker" rgb1="0.3 0.35 0.4" rgb2="0.4 0.45 0.5" width="256" height="256"/>
+    <material name="grid" texture="grid" texrepeat="4 4" reflectance="0.1"/>
+    <mesh name="dog_base_link" file="dog_base_link.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="dog_FR_abd_motor" file="dog_FR_abd_motor.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="dog_FL_abd_motor" file="dog_FL_abd_motor.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="dog_RL_abd_motor" file="dog_RL_abd_motor.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="dog_RR_abd_motor" file="dog_RR_abd_motor.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="dog_FR_hip" file="dog_FR_hip.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="dog_FR_hip_motor" file="dog_FR_hip_motor.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="dog_FR_thigh" file="dog_FR_thigh.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="dog_FR_knee_motor" file="dog_FR_knee_motor.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="dog_FR_calf" file="dog_FR_calf.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="dog_FR_foot" file="dog_FR_foot.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="dog_FL_hip" file="dog_FL_hip.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="dog_FL_hip_motor" file="dog_FL_hip_motor.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="dog_FL_thigh" file="dog_FL_thigh.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="dog_FL_knee_motor" file="dog_FL_knee_motor.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="dog_FL_calf" file="dog_FL_calf.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="dog_FL_foot" file="dog_FL_foot.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="dog_RR_hip" file="dog_RR_hip.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="dog_RR_hip_motor" file="dog_RR_hip_motor.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="dog_RR_thigh" file="dog_RR_thigh.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="dog_RR_knee_motor" file="dog_RR_knee_motor.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="dog_RR_calf" file="dog_RR_calf.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="dog_RR_foot" file="dog_RR_foot.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="dog_RL_hip" file="dog_RL_hip.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="dog_RL_hip_motor" file="dog_RL_hip_motor.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="dog_RL_thigh" file="dog_RL_thigh.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="dog_RL_knee_motor" file="dog_RL_knee_motor.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="dog_RL_calf" file="dog_RL_calf.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="dog_RL_foot" file="dog_RL_foot.stl" scale="0.001 0.001 0.001"/>
+  </asset>
+  <worldbody>
+    <light pos="0 0 2" dir="0 0 -1" directional="true"/>
+    <geom name="floor" type="plane" size="0 0 0.05" material="grid" contype="1" conaffinity="1" friction="0.9 0.02 0.001"/>
+    <body name="trunk" pos="0 0 0.22683">
+      <freejoint name="root"/>
+      <inertial pos="0.00071 -0.000009 -0.008279" mass="3.288409" fullinertia="0.01590483 0.09377696 0.10646657 -0.00000167 -0.00011011 -0.00000047"/>
+      <geom type="mesh" mesh="dog_base_link" pos="0 0.1 0.04" quat="0.70710678 -0.70710678 0 0" contype="0" conaffinity="0" group="1"/>
+      <geom type="mesh" mesh="dog_FR_abd_motor" pos="0.2353145 -0.06 0" quat="0 0 0.73526856 0.67777588" contype="0" conaffinity="0" group="1"/>
+      <geom type="mesh" mesh="dog_FL_abd_motor" pos="0.2353145 0.06 0" quat="0 0 0.73526856 0.67777588" contype="0" conaffinity="0" group="1"/>
+      <geom type="mesh" mesh="dog_RL_abd_motor" pos="-0.2353145 0.06 0" quat="0.86742875 -0.49756142 0 0" contype="0" conaffinity="0" group="1"/>
+      <geom type="mesh" mesh="dog_RR_abd_motor" pos="-0.2353145 -0.06 0" quat="0.86742875 -0.49756142 0 0" contype="0" conaffinity="0" group="1"/>
+      <body name="FR_hip" pos="0.269978 -0.06 0">
+        <joint name="joint12" axis="1 0 0" range="-0.8 0.8"/>
+        <inertial pos="-0.004584 -0.061997 -0.000001" mass="0.495739" fullinertia="0.00034087 0.00032573 0.00040909 0.00010822 -0.00000001 -0.00000001"/>
+        <geom type="mesh" mesh="dog_FR_hip" pos="-0.04194467 -0.04589916 -0.0002075" quat="0.65328148 -0.65328148 0.27059805 -0.27059805" contype="0" conaffinity="0" group="1"/>
+        <geom type="mesh" mesh="dog_FR_hip_motor" pos="0.00000013 -0.10112398 0" quat="-0.49358044 0.50633817 0.50633817 -0.49358044" contype="0" conaffinity="0" group="1"/>
+        <body name="FR_thigh" pos="0 -0.056109 0">
+          <joint name="joint11" axis="0 1 0" range="-2.6 2.6"/>
+          <inertial pos="-0.056926 -0.015186 -0.098341" mass="0.468206" fullinertia="0.00039306 0.00050126 0.00024872 0.00003233 -0.00011742 0.00005896"/>
+          <geom type="mesh" mesh="dog_FR_thigh" pos="0.00000013 -0.04270048 0" quat="0.5 0 0.8660254 0" contype="0" conaffinity="0" group="1"/>
+          <geom type="mesh" mesh="dog_FR_knee_motor" pos="-0.05999987 0.01961402 -0.10392305" quat="0.68915516 0.15831984 -0.15831984 -0.68915516" contype="0" conaffinity="0" group="1"/>
+          <body name="FR_calf" pos="-0.06 0 -0.103923">
+            <joint name="joint10" axis="0 1 0" range="-2.6 2.6"/>
+            <inertial pos="0.037634 0.00935 -0.067057" mass="0.047362" fullinertia="0.00008908 0.00011814 0.00003334 0 0.00004567 0"/>
+            <geom type="mesh" mesh="dog_FR_calf" pos="-0.00950346 0.09664952 -0.00342439" quat="0.684114 0.684114 -0.178852 0.178852" contype="0" conaffinity="0" group="1"/>
+            <geom type="mesh" mesh="dog_FR_foot" pos="0.05462272 0.00934952 -0.09732637" quat="0.35727419 0.61020911 -0.61020911 -0.35727419" contype="0" conaffinity="0" group="1"/>
+            <site name="FR_foot" pos="0.06 0.00935 -0.106907" size="0.008" rgba="1 0 0 0.5"/>
+            <geom name="FR_foot_col" type="sphere" pos="0.06 0.00935 -0.106907" size="0.016" contype="1" conaffinity="1" friction="0.9 0.02 0.001" rgba="0.2 0.2 0.2 1" priority="1"/>
+          </body>
+        </body>
+      </body>
+      <body name="FL_hip" pos="0.269978 0.06 0">
+        <joint name="joint9" axis="1 0 0" range="-0.8 0.8"/>
+        <inertial pos="-0.004584 0.061997 0.000001" mass="0.495739" fullinertia="0.00034087 0.00032573 0.00040909 -0.00010822 0.00000001 -0.00000001"/>
+        <geom type="mesh" mesh="dog_FL_hip" pos="-0.04194467 0.04589916 0.0002075" quat="0.65328148 0.65328148 0.27059805 0.27059805" contype="0" conaffinity="0" group="1"/>
+        <geom type="mesh" mesh="dog_FL_hip_motor" pos="0.00000013 0.10112398 0" quat="0.50481752 0.49513561 -0.49513561 -0.50481752" contype="0" conaffinity="0" group="1"/>
+        <body name="FL_thigh" pos="0 0.056109 0">
+          <joint name="joint8" axis="0 1 0" range="-2.6 2.6"/>
+          <inertial pos="-0.056692 0.015186 -0.098465" mass="0.468206" fullinertia="0.00038651 0.00050119 0.00025521 -0.00003496 -0.00012116 -0.00005755"/>
+          <geom type="mesh" mesh="dog_FL_thigh" pos="0.00000013 0.04270048 0" quat="0 -0.5 0 0.8660254" contype="0" conaffinity="0" group="1"/>
+          <geom type="mesh" mesh="dog_FL_knee_motor" pos="-0.05999987 -0.01961402 -0.10392305" quat="-0.0928138 0.70098901 0.70098901 -0.0928138" contype="0" conaffinity="0" group="1"/>
+          <body name="FL_calf" pos="-0.06 0 -0.103923">
+            <joint name="joint7" axis="0 1 0" range="-2.6 2.6"/>
+            <inertial pos="0.037634 -0.00935 -0.067057" mass="0.047362" fullinertia="0.00008908 0.00011814 0.00003334 0 0.00004567 0"/>
+            <geom type="mesh" mesh="dog_FL_calf" pos="0.00787389 -0.09664952 0.00632832" quat="0.178852 -0.178852 0.684114 0.684114" contype="0" conaffinity="0" group="1"/>
+            <geom type="mesh" mesh="dog_FL_foot" pos="0.05462272 -0.00934952 -0.09732637" quat="0.61020911 0.35727419 0.35727419 0.61020911" contype="0" conaffinity="0" group="1"/>
+            <site name="FL_foot" pos="0.06 -0.00935 -0.106907" size="0.008" rgba="1 0 0 0.5"/>
+            <geom name="FL_foot_col" type="sphere" pos="0.06 -0.00935 -0.106907" size="0.016" contype="1" conaffinity="1" friction="0.9 0.02 0.001" rgba="0.2 0.2 0.2 1" priority="1"/>
+          </body>
+        </body>
+      </body>
+      <body name="RR_hip" pos="-0.269978 -0.06 0">
+        <joint name="joint1" axis="1 0 0" range="-0.8 0.8"/>
+        <inertial pos="0.004598 -0.061997 -0.000002" mass="0.495739" fullinertia="0.00034087 0.00032567 0.00040903 -0.00010831 -0.00000002 -0.00000001"/>
+        <geom type="mesh" mesh="dog_RR_hip" pos="0.04194467 -0.04589916 0.0002075" quat="-0.27059805 -0.27059805 0.65328148 0.65328148" contype="0" conaffinity="0" group="1"/>
+        <geom type="mesh" mesh="dog_RR_hip_motor" pos="-0.00000013 -0.10112398 0" quat="-0.5 0.5 0.5 -0.5" contype="0" conaffinity="0" group="1"/>
+        <body name="RR_thigh" pos="0 -0.056109 0">
+          <joint name="joint3" axis="0 1 0" range="-2.6 2.6"/>
+          <inertial pos="-0.056926 -0.015186 -0.098341" mass="0.468206" fullinertia="0.00039306 0.00050126 0.00024872 0.00003233 -0.00011742 0.00005896"/>
+          <geom type="mesh" mesh="dog_RR_thigh" pos="-0.00000013 -0.04270048 0" quat="0.5 0 0.8660254 0" contype="0" conaffinity="0" group="1"/>
+          <geom type="mesh" mesh="dog_RR_knee_motor" pos="-0.06000013 0.01961402 -0.10392305" quat="0.68915516 0.15831984 -0.15831984 -0.68915516" contype="0" conaffinity="0" group="1"/>
+          <body name="RR_calf" pos="-0.06 0 -0.103923">
+            <joint name="joint2" axis="0 1 0" range="-2.6 2.6"/>
+            <inertial pos="0.037634 0.00935 -0.067057" mass="0.047362" fullinertia="0.00008908 0.00011814 0.00003334 0 0.00004567 0"/>
+            <geom type="mesh" mesh="dog_RR_calf" pos="-0.00950372 0.09664952 -0.00342439" quat="0.684114 0.684114 -0.178852 0.178852" contype="0" conaffinity="0" group="1"/>
+            <geom type="mesh" mesh="dog_RR_foot" pos="0.05462246 0.00934952 -0.09732637" quat="0.35727419 0.61020911 -0.61020911 -0.35727419" contype="0" conaffinity="0" group="1"/>
+            <site name="RR_foot" pos="0.06 0.00935 -0.106907" size="0.008" rgba="1 0 0 0.5"/>
+            <geom name="RR_foot_col" type="sphere" pos="0.06 0.00935 -0.106907" size="0.016" contype="1" conaffinity="1" friction="0.9 0.02 0.001" rgba="0.2 0.2 0.2 1" priority="1"/>
+          </body>
+        </body>
+      </body>
+      <body name="RL_hip" pos="-0.269978 0.06 0">
+        <joint name="joint6" axis="1 0 0" range="-0.8 0.8"/>
+        <inertial pos="0.004598 0.061997 0.000002" mass="0.495739" fullinertia="0.00034087 0.00032567 0.00040903 0.00010831 0.00000002 -0.00000001"/>
+        <geom type="mesh" mesh="dog_RL_hip" pos="0.04194467 0.04589916 -0.0002075" quat="0.27059805 -0.27059805 -0.65328148 0.65328148" contype="0" conaffinity="0" group="1"/>
+        <geom type="mesh" mesh="dog_RL_hip_motor" pos="-0.00000013 0.10112398 0" quat="0.5 0.5 -0.5 -0.5" contype="0" conaffinity="0" group="1"/>
+        <body name="RL_thigh" pos="0 0.056109 0">
+          <joint name="joint5" axis="0 1 0" range="-2.6 2.6"/>
+          <inertial pos="-0.056703 0.015186 -0.09847" mass="0.468206" fullinertia="0.00038649 0.00050126 0.00025529 -0.00003489 -0.00012121 -0.00005748"/>
+          <geom type="mesh" mesh="dog_RL_thigh" pos="-0.00000013 0.04270048 0" quat="0 -0.5 0 0.8660254" contype="0" conaffinity="0" group="1"/>
+          <geom type="mesh" mesh="dog_RL_knee_motor" pos="-0.06000013 -0.01961402 -0.10392305" quat="0.51766595 0.48168658 0.48168658 0.51766595" contype="0" conaffinity="0" group="1"/>
+          <body name="RL_calf" pos="-0.06 0 -0.103923">
+            <joint name="joint4" axis="0 1 0" range="-2.6 2.6"/>
+            <inertial pos="0.037634 -0.00935 -0.067057" mass="0.047362" fullinertia="0.00008908 0.00011814 0.00003334 0 0.00004567 0"/>
+            <geom type="mesh" mesh="dog_RL_calf" pos="0.00787363 -0.09664952 0.00632832" quat="0.178852 -0.178852 0.684114 0.684114" contype="0" conaffinity="0" group="1"/>
+            <geom type="mesh" mesh="dog_RL_foot" pos="0.05462246 -0.00934952 -0.09732637" quat="0.61020911 0.35727419 0.35727419 0.61020911" contype="0" conaffinity="0" group="1"/>
+            <site name="RL_foot" pos="0.06 -0.00935 -0.106907" size="0.008" rgba="1 0 0 0.5"/>
+            <geom name="RL_foot_col" type="sphere" pos="0.06 -0.00935 -0.106907" size="0.016" contype="1" conaffinity="1" friction="0.9 0.02 0.001" rgba="0.2 0.2 0.2 1" priority="1"/>
+          </body>
+        </body>
+      </body>
+    </body>
+  </worldbody>
+  <actuator>
+    <general name="m1" joint="joint1" gear="1" gaintype="fixed" gainprm="1" biastype="user" ctrlrange="-7 7" forcerange="-7 7"/>
+    <general name="m2" joint="joint2" gear="1" gaintype="fixed" gainprm="1" biastype="user" ctrlrange="-7 7" forcerange="-7 7"/>
+    <general name="m3" joint="joint3" gear="1" gaintype="fixed" gainprm="1" biastype="user" ctrlrange="-7 7" forcerange="-7 7"/>
+    <general name="m4" joint="joint4" gear="1" gaintype="fixed" gainprm="1" biastype="user" ctrlrange="-7 7" forcerange="-7 7"/>
+    <general name="m5" joint="joint5" gear="1" gaintype="fixed" gainprm="1" biastype="user" ctrlrange="-7 7" forcerange="-7 7"/>
+    <general name="m6" joint="joint6" gear="1" gaintype="fixed" gainprm="1" biastype="user" ctrlrange="-7 7" forcerange="-7 7"/>
+    <general name="m7" joint="joint7" gear="1" gaintype="fixed" gainprm="1" biastype="user" ctrlrange="-7 7" forcerange="-7 7"/>
+    <general name="m8" joint="joint8" gear="1" gaintype="fixed" gainprm="1" biastype="user" ctrlrange="-7 7" forcerange="-7 7"/>
+    <general name="m9" joint="joint9" gear="1" gaintype="fixed" gainprm="1" biastype="user" ctrlrange="-7 7" forcerange="-7 7"/>
+    <general name="m10" joint="joint10" gear="1" gaintype="fixed" gainprm="1" biastype="user" ctrlrange="-7 7" forcerange="-7 7"/>
+    <general name="m11" joint="joint11" gear="1" gaintype="fixed" gainprm="1" biastype="user" ctrlrange="-7 7" forcerange="-7 7"/>
+    <general name="m12" joint="joint12" gear="1" gaintype="fixed" gainprm="1" biastype="user" ctrlrange="-7 7" forcerange="-7 7"/>
+  </actuator>
+  <keyframe>
+    <key name="stand" qpos="0 0 0.22110862 1 0 0 0  -0.1 0 0 0.1 0 0 -0.1 0 0 0.1 0 0"/>
+  </keyframe>
+</mujoco>
