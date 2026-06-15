@@ -7,10 +7,15 @@ tau_max = ±7 N·m, rotor armature 8.5e-3 kg·m²** (measured, reflected through
 ## Simulation environment
 
 The MuJoCo scene (`scene\DOG4.6_scene.xml`) places the robot on a flat checkerboard
-floor and drives it at a commanded body velocity. Six successive frames of a trot
-(SLQ-MPC + leg control, 0.3 m/s), ordered left-to-right then top-to-bottom:
+floor and drives it at a commanded body velocity. The standing robot from six camera
+angles in MuJoCo:
 
-![Simulation environment — six successive trot frames](scene/DOG4.6_sim_env.png)
+![DOG4.6 in MuJoCo — six camera views](scene/DOG4.6_views.png)
+
+All four controller stacks trotting at the same command (0.3 m/s). Each row is one
+stack; six successive frames per stack, ordered left-to-right then top-to-bottom:
+
+![Trot — all four stacks](scene/DOG4.6_trot_4stacks.png)
 
 ```
 scene\DOG4.6_scene.xml     simulation scene (joint1..12 / m1..12 / {leg}_foot sites —
