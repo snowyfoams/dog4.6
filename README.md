@@ -12,10 +12,20 @@ angles in MuJoCo:
 
 ![DOG4.6 in MuJoCo — six camera views](scene/DOG4.6_views.png)
 
-All four controller stacks trotting at the same command (0.3 m/s). Each row is one
-stack; six successive frames per stack, ordered left-to-right then top-to-bottom:
+All four controller stacks trotting at the same command (0.3 m/s). Six successive
+frames per stack, ordered left-to-right then top-to-bottom:
 
-![Trot — all four stacks](scene/DOG4.6_trot_4stacks.png)
+**MIT — convex MPC + leg control**
+![MIT trot](scene/DOG4.6_trot_mit_frames.png)
+
+**ETH — SLQ-MPC + QP-WBC**
+![ETH trot](scene/DOG4.6_trot_eth_frames.png)
+
+**X1 — convex MPC + QP-WBC**
+![X1 trot](scene/DOG4.6_trot_cvxwbc_frames.png)
+
+**X2 — SLQ-MPC + leg control**
+![X2 trot](scene/DOG4.6_trot_slqjt_frames.png)
 
 ```
 scene\DOG4.6_scene.xml     simulation scene (joint1..12 / m1..12 / {leg}_foot sites —
